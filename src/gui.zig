@@ -2012,16 +2012,16 @@ pub fn comboFromEnum(
         @compileError("Error: current_item must be a pointer-to-an-enum, not a " ++ @TypeOf(EnumType));
     };
 
-    const FieldNameIndex = std.meta.Tuple(&.{ []const u8, i32 });
+    const FieldNameIndex = @Tuple(&.{ []const u8, i32 });
     comptime var item_names: [:0]const u8 = "";
-    comptime var field_name_to_index_list: [enum_type_info.fields.len]FieldNameIndex = undefined;
-    comptime var index_to_enum: [enum_type_info.fields.len]EnumType = undefined;
+    comptime var field_name_to_index_list: [enum_type_info.field_names.len]FieldNameIndex = undefined;
+    comptime var index_to_enum: [enum_type_info.field_names.len]EnumType = undefined;
 
     comptime {
-        for (enum_type_info.fields, 0..) |f, i| {
-            item_names = item_names ++ f.name ++ "\x00";
-            const e: EnumType = @enumFromInt(f.value);
-            field_name_to_index_list[i] = .{ f.name, @intCast(i) };
+        for (enum_type_info.field_names, enum_type_info.field_values, 0..) |f_name, f_value, i| {
+            item_names = item_names ++ f_name ++ "\x00";
+            const e: EnumType = @enumFromInt(f_value);
+            field_name_to_index_list[i] = .{ f_name, @intCast(i) };
             index_to_enum[i] = e;
         }
     }
