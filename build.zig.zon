@@ -18,8 +18,8 @@
             .lazy = true,
         },
         .zglfw = .{
-            .url = "git+https://github.com/ezzieyguywuf/zglfw.git#6e39cc356564525d2fed529e732595813e5224d6",
-            .hash = "zglfw-0.10.0-dev-zgVDNCC6IQD8ejmsERzRdWwpzrlcSHPBFmtcXKeMFwcZ",
+            .url = "git+https://github.com/Ashet-Technologies/zglfw?ref=0.17.x#9546a4d204967014edd4fad567540d541765ae44",
+            .hash = "zglfw-0.10.0-dev-zgVDNBe7IQCmutfxM4Pr_mOxiAcxErexVY-qvF52rMCB",
             .lazy = true,
         },
         .zgpu = .{
